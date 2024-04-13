@@ -3,6 +3,9 @@ from DAL.usersDAL import usersJSON
 from DAL.permissionsDAL import permissionsJSON
 from datetime import date
 from bson import ObjectId
+from datetime import timedelta
+
+from flask_jwt_extended import create_access_token
 
 class UsersBLL:
     def __init__(self):
@@ -42,14 +45,12 @@ class UsersBLL:
         jsonUsers = self.usersJSON.read_json()
         for jsonUser in jsonUsers['Users']:
             if dbUser[0]['_id'] == ObjectId(jsonUser['_id']):
-                print('yes')
 
                 dbUser[0]['userInfo'] = jsonUser
 
         permissions = self.permissionsJSON.read_json()
         for permission in permissions:
             if dbUser[0]['_id'] == ObjectId(permission['_id']):
-                print('yes')
                 dbUser[0]['permissions'] = permission['permissions']  
         print(f'''
               -----------
@@ -148,7 +149,43 @@ class UsersBLL:
         self.usersDB.delete_data(id)
         
         return {"Deleted": id}
-        
+    
+    def determine_expiration_time(self,user):
+        permUser = self.get_by_id(user['_id'])
+        userSessionTO = permUser['userInfo']['sessionTimeOut']
+
+            
+        expiration_time = timedelta(minutes=userSessionTO)
+        return expiration_time
+
+    def login(self,username,password):
+        dbUsers = self.usersDB.get_all()
+        for dbUser in dbUsers:
+            if dbUser['username'] == username and dbUser['password'] == password:
+                expiration_time = self.determine_expiration_time(dbUser)
+                access_token = create_access_token(identity=str(dbUser['_id']),expires_delta=expiration_time,additional_claims={'permissions':self.get_by_id(dbUser['_id'])['permissions']})
+                # can i add more data to this token??
+
+                return {'status':'ok',"expires":str(expiration_time),'token':access_token}
+        return {'status':'error'}
+    
+    def check_permissions(self,jwt,permission_needed):
+        permissions = jwt['permissions']
+        for permission in permissions:
+            if permission == permission_needed:
+                return True
+        return False
+    
+    def signup(self,username,password):
+        dbUsers = self.usersDB.get_all()
+        for dbUser in dbUsers:
+            if dbUser['username'] == username:
+                if dbUser['password'] == 'newly_created':
+                    self.update_user(dbUser['_id'],{"password":password})
+                    return self.login(username,password)
+                else:
+                    return {'status':'error'}
+        return {'status':'error'}
     
         
 

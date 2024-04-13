@@ -2,6 +2,7 @@
   {
     "_id": "6601b12634ddaec8db84e6be",
     "permissions": [
+      "System Admin",
       "View Subscriptions",
       "Create Subscriptions",
       "Delete Subscriptions",
@@ -15,6 +16,15 @@
     "permissions": [
       "Create Subscriptions",
       "View Movies"
+    ]
+  },
+  {
+    "_id": "661599694e2e36286ba084ff",
+    "permissions": [
+      "View Subscriptions",
+      "Create Subscriptions",
+      "View Movies",
+      "Create Movies"
     ]
   }
 ]
