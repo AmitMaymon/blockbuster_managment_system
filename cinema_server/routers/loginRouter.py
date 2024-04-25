@@ -19,4 +19,10 @@ def sign_up():
     data = users_bll.signup(obj['username'],obj['password'])
     return jsonify(data)
 
+
+@login.route('/checkt',methods=['POST'])
+def check_token():
+    obj = request.json
+    data = users_bll.check_token(obj['token'])
+    return jsonify(data)
     

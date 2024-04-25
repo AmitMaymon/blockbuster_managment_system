@@ -6,6 +6,7 @@ from bson import ObjectId
 from datetime import timedelta
 
 from flask_jwt_extended import create_access_token
+from flask_jwt_extended import decode_token
 
 class UsersBLL:
     def __init__(self):
@@ -100,7 +101,7 @@ class UsersBLL:
         for user in jsonUsers:
             user['_id'] = str(user['_id'])
             if(user['_id'] == id):
-                for key,value in obj.items():
+                for key,value in obj['userInfo'].items():
                     if key in user:
                         user[key] = value
                     else:
@@ -187,5 +188,12 @@ class UsersBLL:
                     return {'status':'error'}
         return {'status':'error'}
     
+    def check_token(self,token):
+        try:
+            jwt = decode_token(token)
+            
+            return {'status':'ok','permissions':jwt['permissions']}
+        except:
+            return {'status':'error'}
         
 

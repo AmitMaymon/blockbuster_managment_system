@@ -6,25 +6,27 @@
       "View Subscriptions",
       "Create Subscriptions",
       "Delete Subscriptions",
+      "Update Subscription",
       "View Movies",
       "Create Movies",
-      "Delete Movies"
+      "Delete Movies",
+      "Update Movies"
     ]
   },
   {
     "_id": "6601d0982636ed615398026d",
     "permissions": [
+      "View Subscriptions",
       "Create Subscriptions",
       "View Movies"
     ]
   },
   {
-    "_id": "661599694e2e36286ba084ff",
+    "_id": "662a50258bb8d5269b2670ec",
     "permissions": [
       "View Subscriptions",
       "Create Subscriptions",
-      "View Movies",
-      "Create Movies"
+      "View Movies"
     ]
   }
 ]
