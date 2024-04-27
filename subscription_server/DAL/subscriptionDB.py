@@ -28,6 +28,8 @@ class SubscriptionsDB:
         return "Created"
     
     def update_data(self,id,obj):
+        if('_id' in obj):
+            obj.pop('_id')
         data = self.__collection.update_one({'_id':ObjectId(id)},{"$set":obj})
         return 'Updated'
 

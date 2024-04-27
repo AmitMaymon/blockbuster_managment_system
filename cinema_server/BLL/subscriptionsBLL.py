@@ -1,6 +1,7 @@
 import requests
 moviesURL = "http://127.0.0.1:5001/movies"
 subsURL = "http://127.0.0.1:5001/subs"
+membersURL = "http://127.0.0.1:5001/members"
 
 
 class subscriptionsBLL:
@@ -9,6 +10,8 @@ class subscriptionsBLL:
             self.__url = moviesURL
         elif route == "subs":
             self.__url = subsURL
+        elif route == "members":
+            self.__url = membersURL
 
 
     def get_all(self):

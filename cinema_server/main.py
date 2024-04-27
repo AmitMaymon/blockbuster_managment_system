@@ -8,6 +8,7 @@ from routers.usersRouter import users
 from routers.loginRouter import login
 from routers.subscriptionsRouter import subs
 from routers.moviesRouter import movies
+from routers.membersRouter import members
 
 CLIENT = 'http://localhost:3000'
 
@@ -22,6 +23,7 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 app.register_blueprint(login,url_prefix='/login')
 app.register_blueprint(users,url_prefix='/users')
 app.register_blueprint(subs,url_prefix='/subs')
+app.register_blueprint(members,url_prefix='/members')
 app.register_blueprint(movies,url_prefix='/movies')
 
 jwt = JWTManager(app)

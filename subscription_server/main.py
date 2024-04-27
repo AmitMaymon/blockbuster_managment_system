@@ -6,6 +6,7 @@ import json
 
 from routers.subsRouter import subs
 from routers.moviesRouter import movies
+from routers.membersRouter import members
 bll = MainBLL()
 
 
@@ -22,6 +23,7 @@ bll.insert_movies_to_db()
 
 app.register_blueprint(subs, url_prefix='/subs')
 app.register_blueprint(movies, url_prefix='/movies')
+app.register_blueprint(members, url_prefix='/members')
 
 if __name__ == "__main__":
     app.run(debug=True,port=5001)

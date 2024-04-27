@@ -19,7 +19,7 @@ def get_all_movies():
     movies = movies_bll.get_all()
     return jsonify(movies)
 
-@movies.route('/<int:id>',methods=['GET'])
+@movies.route('/<id>',methods=['GET'])
 @jwt_required()
 def get_movie_by_id(id):
     jwt_data = get_jwt()
@@ -44,7 +44,7 @@ def add_movie():
     movies = movies_bll.add_data(obj)
     return jsonify(movies)
 
-@movies.route('/<int:id>',methods=['PUT'])
+@movies.route('/<id>',methods=['PUT'])
 @jwt_required()
 def update_movie(id):
     jwt_data = get_jwt()
@@ -58,7 +58,7 @@ def update_movie(id):
     movies = movies_bll.update_data(id,obj)
     return jsonify(movies)
 
-@movies.route('/<int:id>',methods=['DELETE'])
+@movies.route('/<id>',methods=['DELETE'])
 @jwt_required()
 def delete_movie(id):
     jwt_data = get_jwt()

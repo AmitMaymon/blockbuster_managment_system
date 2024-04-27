@@ -24,8 +24,14 @@
   {
     "_id": "662a50258bb8d5269b2670ec",
     "permissions": [
+      "View Movies",
+      "Create Movies"
+    ]
+  },
+  {
+    "_id": "662d4529563614ba171f6b02",
+    "permissions": [
       "View Subscriptions",
-      "Create Subscriptions",
       "View Movies"
     ]
   }
