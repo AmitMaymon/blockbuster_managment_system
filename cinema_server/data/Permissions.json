@@ -18,7 +18,8 @@
     "permissions": [
       "View Subscriptions",
       "Create Subscriptions",
-      "View Movies"
+      "View Movies",
+      "Create Movies"
     ]
   },
   {
@@ -26,13 +27,6 @@
     "permissions": [
       "View Movies",
       "Create Movies"
-    ]
-  },
-  {
-    "_id": "662d4529563614ba171f6b02",
-    "permissions": [
-      "View Subscriptions",
-      "View Movies"
     ]
   }
 ]
