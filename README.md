@@ -1,4 +1,7 @@
-This is a project i was given to do 
+This is a project i was given to do,
+its like a blockbuster management platform. 
+
+instructions are in the main repo.
 
 the instructions are kind of a mess but i think i did what was required.
 
